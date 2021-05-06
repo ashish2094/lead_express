@@ -63,7 +63,7 @@
       id="sec-8ac9"
     >
       <div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1">
+        <a href="{% url 'contact' %}" class="u-image u-logo u-image-1">
           <img
             src="{% static 'img/default-logo.png' %}"
             class="u-logo-image u-logo-image-1"
@@ -78,8 +78,9 @@
                 preserveAspectRatio="xMidYMin slice"
                 viewBox="0 0 112 112"
               >
-                <use xlink:href="#svg-1eef"></use></svg
-              ><svg
+                <use xlink:href="#svg-1eef"></use>
+              </svg>
+              <svg
                 class="u-svg-content"
                 viewBox="0 0 112 112"
                 x="0"
@@ -228,6 +229,14 @@
                   >Register</a
                 >
               </li>
+              <li class="u-nav-item">
+                <a
+                  class="u-active-grey-15 u-button-style u-grey-15 u-hover-grey-10 u-nav-link u-text-active-white u-text-black u-text-hover-grey-90"
+                  style="padding: 10px 20px"
+                  href="{% url 'contact' %}"
+                  >Contact</a
+                >
+              </li>
             </ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
@@ -261,6 +270,14 @@
                       style="padding: 10px 20px"
                       href="{% url 'register' %}"
                       >Register</a
+                    >
+                  </li>
+                  <li class="u-nav-item">
+                    <a
+                      class="u-button-style u-nav-link"
+                      style="padding: 10px 20px"
+                      href="{% url 'contact' %}"
+                      >Contact</a
                     >
                   </li>
                 </ul>

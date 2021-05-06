@@ -3,8 +3,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 from django.contrib import messages
 from .models import Leads
-from django.views import View
 from .resources import LeadResource
+from django.views import View
 from django.http import JsonResponse, HttpResponse
 from django.core.paginator import Paginator
 import datetime
@@ -12,7 +12,8 @@ from tablib import Dataset
 import xlwt
 
 # Create your views here.
-class LeadView(View):
+class LeadView(LoginRequiredMixin, View):
+    login_url = '/login/'
     def get(self, request):
         data = []
         data = Leads.objects.filter(author=request.user).order_by('-date')
@@ -25,7 +26,8 @@ class LeadView(View):
         }
         return render(request, 'leads.html', context)
 
-class LeadAddView(View):
+class LeadAddView(LoginRequiredMixin, View):
+    login_url = '/login/'
     def get(self, request):
         context = {
         }
@@ -47,7 +49,7 @@ class LeadAddView(View):
 class Exportxl(View):
     def get(self, request):
         response = HttpResponse(content_type='application/ms-excel')
-        response['Content-Disposition'] = 'attachment; filename= Leads' + str(datetime.datetime.now()) + '.xls'
+        response['Content-Disposition'] = 'attachment; filename= Leads' + str(datetime.date.today()) + '.xls'
         wb = xlwt.Workbook(encoding='utf-8')
         ws = wb.add_sheet('Leads')
         row_num = 0
@@ -81,7 +83,48 @@ class Importxl(View):
         if new_lead.name.endswith('xls'):
             imported_data = dataset.load(new_lead.read(), format='xls')
         for data in imported_data:
+            print(data)
+
             Leads.objects.create(author=request.user, outlet = data[1], 
             zone = data[2],coordinates = data[3], timings = data[4],address = data[5])
         context={}
         return redirect('/leads')
+
+class EditLeadView(LoginRequiredMixin, View):
+    login_url = '/login/'
+    def get(self, request, id):
+        lead = Leads.objects.get(author=request.user, pk=id)
+        context = {
+            'lead' : lead,
+            }
+        return render(request, "editlead.html", context)
+
+    def post(self, request, id):
+        outlet = request.POST['outlet']
+        if not outlet:
+            messages.error(request, 'Outlet Required')
+            return redirect('/leads/')
+        zone = request.POST['zone']
+        coordinates = request.POST['coordinates']
+        time = request.POST['timings']
+        address = request.POST['address']
+        remark = request.POST['remark']
+        lead = Leads.objects.get(id=id)
+        lead.author=request.user
+        lead.outlet = outlet
+        lead.zone = zone
+        lead.address = address
+        lead.remark = remark
+        lead.coordinates = coordinates
+        lead.timings = time
+        lead.save()
+        messages.info(request, 'Lead Updated Successfully!')
+        return redirect('/leads/')
+
+class DeleteLeadView(LoginRequiredMixin, View):
+    login_url = '/login/'
+    def get(self, request, id):
+        lead = Leads.objects.get(id=id)
+        lead.delete()
+        messages.info(request, 'Lead Deleted Successfully!')
+        return redirect('/leads/')

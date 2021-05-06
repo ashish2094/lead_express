@@ -63,7 +63,7 @@
       id="sec-8ac9"
     >
       <div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1">
+        <a href="{% url 'home' %}" class="u-image u-logo u-image-1">
           <img
             src="{% static 'img/default-logo.png' %}"
             class="u-logo-image u-logo-image-1"
@@ -228,6 +228,14 @@
                   >Register</a
                 >
               </li>
+              <li class="u-nav-item">
+                <a
+                  class="u-active-grey-15 u-button-style u-grey-15 u-hover-grey-10 u-nav-link u-text-active-white u-text-black u-text-hover-grey-90"
+                  style="padding: 10px 20px"
+                  href="{% url 'contact' %}"
+                  >Contact</a
+                >
+              </li>
             </ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
@@ -251,6 +259,7 @@
                     <a
                       class="u-button-style u-nav-link"
                       style="padding: 10px 20px"
+                      href="{% url 'login' %}"
                       >Login</a
                     >
                   </li>
@@ -258,7 +267,16 @@
                     <a
                       class="u-button-style u-nav-link"
                       style="padding: 10px 20px"
+                      href="{% url 'register' %}"
                       >Register</a
+                    >
+                  </li>
+                  <li class="u-nav-item">
+                    <a
+                      class="u-button-style u-nav-link"
+                      style="padding: 10px 20px"
+                      href="{% url 'contact' %}"
+                      >Contact</a
                     >
                   </li>
                 </ul>
@@ -675,7 +693,6 @@
                           class="u-svg-link"
                           preserveAspectRatio="xMidYMin slice"
                           viewBox="0 0 112 112"
-                          style=""
                         >
                           <use xlink:href="#svg-5d67"></use></svg
                         ><svg
@@ -697,7 +714,6 @@
                           class="u-svg-link"
                           preserveAspectRatio="xMidYMin slice"
                           viewBox="0 0 112 112"
-                          style=""
                         >
                           <use xlink:href="#svg-5e6b"></use></svg
                         ><svg
@@ -725,7 +741,6 @@
                           class="u-svg-link"
                           preserveAspectRatio="xMidYMin slice"
                           viewBox="0 0 112 112"
-                          style=""
                         >
                           <use xlink:href="#svg-7e19"></use></svg
                         ><svg
@@ -747,7 +762,6 @@
                           class="u-svg-link"
                           preserveAspectRatio="xMidYMin slice"
                           viewBox="0 0 112 112"
-                          style=""
                         >
                           <use xlink:href="#svg-6ec1"></use></svg
                         ><svg
@@ -777,7 +791,6 @@
                       class="u-svg-link"
                       preserveAspectRatio="xMidYMin slice"
                       viewBox="0 0 480 480"
-                      style=""
                     >
                       <use xlink:href="#svg-7c2d"></use></svg
                     ><svg
@@ -861,7 +874,6 @@
                       class="u-svg-link"
                       preserveAspectRatio="xMidYMin slice"
                       viewBox="0 0 512 512"
-                      style=""
                     >
                       <use xlink:href="#svg-bd79"></use></svg
                     ><svg
@@ -960,7 +972,6 @@
                       class="u-svg-link"
                       preserveAspectRatio="xMidYMin slice"
                       viewBox="1 -23 511.99849 511"
-                      style=""
                     >
                       <use xlink:href="#svg-8d09"></use></svg
                     ><svg

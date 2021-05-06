@@ -1,9 +1,9 @@
 {% extends 'dashboard.html' %} {% block content %}
 <div class="container mt-4">
   <button class="btn btn-outline-info float-right"><a href="{% url 'lead-dashboard' %}">Back</a></button>
-  <p><h2>Add Lead</h2></p>
+  <p><h2>Update Lead</h2></p>
   
-  <form action="{% url 'lead-add' %}" method="post">
+  <form action="{% url 'lead-edit' lead.id %}" method="post">
     {% csrf_token %}
     <div class="card mt-4">
       <div class="card-body">
@@ -13,24 +13,27 @@
               <h5>Outlet : </h5>
               <input
                 type="text"
-                class="form-control form-control-sm"
+                class="form-control form-control"
                 name="outlet"
+                value="{{ lead.outlet }}"
               />
             </div>
             <div class="form-group">
               <h5>Zone : </h5>
               <input
               type="text"
-                class="form-control form-control-sm"
+                class="form-control form-control"
                 name="zone"
+                value="{{ lead.zone }}"
               ></input>
             </div>
             <div class="form-group">
               <h5>Coordinates : </h5>
               <input
               type="text"
-                class="form-control form-control-sm"
+                class="form-control form-control"
                 name="coordinates"
+                value="{{ lead.coordinates }}"
               ></input>
             </div>
           </div>
@@ -39,8 +42,9 @@
           <h5>Timings : </h5>
           <input
           type="text"
-            class="form-control form-control-sm"
-            name="timing"
+            class="form-control form-control"
+            name="timings"
+            value="{{ lead.timings }}"
           ></input>
         </div>
 
@@ -48,8 +52,9 @@
           <h5>Address : </h5>
           <input
           type="text"
-            class="form-control form-control-sm"
+            class="form-control form-control"
             name="address"
+            value="{{ lead.address }}"
           ></input>
         </div>
 
@@ -57,8 +62,9 @@
           <h5>Remark : </h5>
           <input
           type="text"
-            class="form-control form-control-sm"
+            class="form-control form-control"
             name="remark"
+            value="{{ lead.remark }}"
           ></input>
         </div>
       </div>
@@ -67,6 +73,9 @@
       Submit
     </button>
   </form>
+  <button class="btn btn-outline-danger float-right mx-5">
+    <a href="{% url 'lead-delete' lead.id %}">Delete</a>
+  </button>
 </div>
 
 {% endblock %}

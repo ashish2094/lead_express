@@ -11,20 +11,29 @@
     <meta name="description" content="" />
     <meta name="page_type" content="np-template-header-footer-from-plugin" />
     <title>Contact</title>
-    <link rel="stylesheet" href="nicepage1.css" media="screen" />
-    <link rel="stylesheet" href="Contact.css" media="screen" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/nicepage1.css' %}"
+      media="screen"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/Contact.css' %}"
+      media="screen"
+    />
     <script
       class="u-script"
       type="text/javascript"
-      src="jquery-1.9.1.min.js"
+      src="{% static 'js/jquery-1.9.1.min.js' %}"
       defer=""
     ></script>
     <script
       class="u-script"
       type="text/javascript"
-      src="nicepage.js"
+      src="{% static 'js/nicepage.js' %}"
       defer=""
     ></script>
+
     <link
       id="u-theme-google-font"
       rel="stylesheet"
@@ -46,10 +55,6 @@
       }
     </script>
     <meta property="og:title" content="Contact" />
-    <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#c0877c" />
-    <link rel="canonical" href="index.html" />
-    <meta property="og:url" content="index.html" />
   </head>
   <body class="u-body u-overlap u-overlap-contrast">
     <header
@@ -91,21 +96,6 @@
                   <rect y="236" width="302" height="30"></rect>
                   <rect y="136" width="302" height="30"></rect>
                 </g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
               </svg>
             </a>
           </div>
@@ -114,7 +104,7 @@
               <li class="u-nav-item">
                 <a
                   class="u-active-grey-15 u-button-style u-grey-15 u-hover-grey-10 u-nav-link u-text-active-white u-text-black u-text-hover-grey-90"
-                  href="Page-1.html"
+                  href="{% url 'home' %}"
                   style="padding: 10px 20px"
                   >Home</a
                 >
@@ -122,7 +112,7 @@
               <li class="u-nav-item">
                 <a
                   class="u-active-grey-15 u-button-style u-grey-15 u-hover-grey-10 u-nav-link u-text-active-white u-text-black u-text-hover-grey-90"
-                  href="Login.html"
+                  href="{% url 'login' %}"
                   style="padding: 10px 20px"
                   >Login</a
                 >
@@ -130,7 +120,7 @@
               <li class="u-nav-item">
                 <a
                   class="u-active-grey-15 u-button-style u-grey-15 u-hover-grey-10 u-nav-link u-text-active-white u-text-black u-text-hover-grey-90"
-                  href="Register.html"
+                  href="{% url 'register' %}"
                   style="padding: 10px 20px"
                   >Register</a
                 >
@@ -138,7 +128,7 @@
               <li class="u-nav-item">
                 <a
                   class="u-active-grey-15 u-button-style u-grey-15 u-hover-grey-10 u-nav-link u-text-active-white u-text-black u-text-hover-grey-90"
-                  href="Contact.html"
+                  href="{% url 'contact' %}"
                   style="padding: 10px 20px"
                   >Contact</a
                 >
@@ -157,7 +147,7 @@
                   <li class="u-nav-item">
                     <a
                       class="u-button-style u-nav-link"
-                      href="Page-1.html"
+                      href="{% url 'home' %}"
                       style="padding: 10px 20px"
                       >Home</a
                     >
@@ -165,7 +155,7 @@
                   <li class="u-nav-item">
                     <a
                       class="u-button-style u-nav-link"
-                      href="Login.html"
+                      href="{% url 'login' %}"
                       style="padding: 10px 20px"
                       >Login</a
                     >
@@ -173,7 +163,7 @@
                   <li class="u-nav-item">
                     <a
                       class="u-button-style u-nav-link"
-                      href="Register.html"
+                      href="{% url 'register' %}"
                       style="padding: 10px 20px"
                       >Register</a
                     >
@@ -181,7 +171,7 @@
                   <li class="u-nav-item">
                     <a
                       class="u-button-style u-nav-link"
-                      href="Contact.html"
+                      href="{% url 'contact' %}"
                       style="padding: 10px 20px"
                       >Contact</a
                     >
@@ -203,7 +193,6 @@
                 class="u-svg-link"
                 preserveAspectRatio="xMidYMin slice"
                 viewBox="0 0 56.966 56.966"
-                style=""
               >
                 <use xlink:href="#svg-54b8"></use>
               </svg>
@@ -222,21 +211,6 @@
                 <path
                   d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"
                 ></path>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
               </svg>
             </span>
           </button>
@@ -249,13 +223,13 @@
           />
         </form>
         <a
-          href="https://nicepage.com"
+          href="{% url 'home' %}"
           class="u-image u-logo u-image-1"
           data-image-width="80"
           data-image-height="40"
         >
           <img
-            src="images/default-logo.png"
+            src="{% static 'img/default-logo.png' %}"
             class="u-logo-image u-logo-image-1"
             data-image-width="64"
           />
@@ -283,7 +257,6 @@
                     class="u-svg-link"
                     preserveAspectRatio="xMidYMin slice"
                     viewBox="0 0 24 24"
-                    style=""
                   >
                     <use xlink:href="#svg-509b"></use></svg
                   ><svg class="u-svg-content" viewBox="0 0 24 24" id="svg-509b">
@@ -317,7 +290,6 @@
                     class="u-svg-link"
                     preserveAspectRatio="xMidYMin slice"
                     viewBox="0 0 513.64 513.64"
-                    style=""
                   >
                     <use xlink:href="#svg-e736"></use></svg
                   ><svg
@@ -354,7 +326,6 @@
                     class="u-svg-link"
                     preserveAspectRatio="xMidYMin slice"
                     viewBox="0 0 512 512"
-                    style=""
                   >
                     <use xlink:href="#svg-3a88"></use></svg
                   ><svg
@@ -613,24 +584,5 @@
         </p>
       </div>
     </footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <a
-        class="u-link"
-        href="https://nicepage.com/html-templates"
-        target="_blank"
-      >
-        <span>HTML Template</span>
-      </a>
-      <p class="u-text">
-        <span>created with</span>
-      </p>
-      <a
-        class="u-link"
-        href="https://nicepage.com/html-website-builder"
-        target="_blank"
-      >
-        <span>Free WYSIWYG HTML Editor</span> </a
-      >.
-    </section>
   </body>
 </html>
