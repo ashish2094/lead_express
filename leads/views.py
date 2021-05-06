@@ -4,16 +4,18 @@ from django.conf import settings
 from django.contrib import messages
 from .models import Leads
 from django.views import View
+from .resources import LeadResource
 from django.http import JsonResponse, HttpResponse
 from django.core.paginator import Paginator
 import datetime
+from tablib import Dataset
 import xlwt
 
 # Create your views here.
 class LeadView(View):
     def get(self, request):
         data = []
-        data = Leads.objects.all().order_by('-date')
+        data = Leads.objects.filter(author=request.user).order_by('-date')
         p = Paginator(data, 10)
         page_no = request.GET.get('page')
         page_obj = Paginator.get_page(p, page_no)
@@ -62,3 +64,24 @@ class Exportxl(View):
                 ws.write(row_num, col_n, str(row[col_n]), font_style)
         wb.save(response)
         return response
+
+class Importxl(View):
+    def get(self, request):
+        return render(request, "upload.html", {})
+
+    def post(self, request):
+        lead_resource = LeadResource()
+        dataset = Dataset()
+        new_lead = request.FILES['myfile']
+        if not new_lead.name.endswith('xlsx' or 'xls'):
+            messages.info(request, 'Unsupported Format')
+            return redirect('/import-excel/')
+        if new_lead.name.endswith('xlsx'):
+            imported_data = dataset.load(new_lead.read(), format='xlsx')
+        if new_lead.name.endswith('xls'):
+            imported_data = dataset.load(new_lead.read(), format='xls')
+        for data in imported_data:
+            Leads.objects.create(author=request.user, outlet = data[1], 
+            zone = data[2],coordinates = data[3], timings = data[4],address = data[5])
+        context={}
+        return redirect('/leads')

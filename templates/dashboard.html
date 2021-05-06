@@ -105,7 +105,7 @@
       </nav>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <form action="$" method="post">
+          <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <input class="btn btn-primary" type="submit" value="Sign out" />
           </form>

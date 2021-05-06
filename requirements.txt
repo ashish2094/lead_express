@@ -6,3 +6,4 @@ whitenoise
 xlwt
 validate_email
 django-heroku
+django-import-export
