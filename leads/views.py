@@ -13,7 +13,7 @@ import xlwt
 
 # Create your views here.
 class LeadView(LoginRequiredMixin, View):
-    login_url = '/login/'
+    login_url = '/auth/login/'
     def get(self, request):
         data = []
         data = Leads.objects.filter(author=request.user).order_by('-date')
@@ -27,7 +27,7 @@ class LeadView(LoginRequiredMixin, View):
         return render(request, 'leads.html', context)
 
 class LeadAddView(LoginRequiredMixin, View):
-    login_url = '/login/'
+    login_url = '/auth/login/'
     def get(self, request):
         context = {
         }
@@ -91,7 +91,7 @@ class Importxl(View):
         return redirect('/leads')
 
 class EditLeadView(LoginRequiredMixin, View):
-    login_url = '/login/'
+    login_url = '/auth/login/'
     def get(self, request, id):
         lead = Leads.objects.get(author=request.user, pk=id)
         context = {
@@ -122,7 +122,7 @@ class EditLeadView(LoginRequiredMixin, View):
         return redirect('/leads/')
 
 class DeleteLeadView(LoginRequiredMixin, View):
-    login_url = '/login/'
+    login_url = '/auth/login/'
     def get(self, request, id):
         lead = Leads.objects.get(id=id)
         lead.delete()

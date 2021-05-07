@@ -30,7 +30,7 @@ class RegistrationView(View):
                 if not User.objects.filter(email=email).exists() :
                     if len(password)<8:
                         messages.error(request, 'Password should be minimum 8 characters')
-                        return render(request, '/auth/register.html', context)
+                        return render(request, 'auth/register.html', context)
                     else: 
                         user = User.objects.create_user(username=username,email=email,first_name=first_name,last_name=last_name)
                         user.set_password(password)
