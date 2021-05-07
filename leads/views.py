@@ -49,21 +49,22 @@ class LeadAddView(LoginRequiredMixin, View):
 class Exportxl(View):
     def get(self, request):
         response = HttpResponse(content_type='application/ms-excel')
-        response['Content-Disposition'] = 'attachment; filename= Leads' + str(datetime.date.today()) + '.xls'
+        response['Content-Disposition'] = 'attachment; filename= Leads-' + str(datetime.date.today()) + '.xls'
         wb = xlwt.Workbook(encoding='utf-8')
         ws = wb.add_sheet('Leads')
         row_num = 0
         font_style = xlwt.XFStyle()
         font_style.font.bold=True
-        cols = ['Outlet', 'Zone', 'Coordinates', 'Timings', 'Address', 'Remark', 'Date']
+        cols = ['Sr.No.','Outlet', 'Zone', 'Coordinates', 'Timings', 'Address', 'Remark', 'Date']
         for col_n in range(len(cols)):
             ws.write(row_num, col_n, cols[col_n], font_style)
         font_style = xlwt.XFStyle()
         rows = Leads.objects.all().order_by('-date').values_list('outlet', 'zone', 'coordinates', 'timings', 'address', 'remark', 'date')
         for row in rows:
             row_num += 1
+            ws.write(row_num, 0, str(row_num), font_style)
             for col_n in range(len(row)):
-                ws.write(row_num, col_n, str(row[col_n]), font_style)
+                ws.write(row_num, col_n+1, str(row[col_n]), font_style)
         wb.save(response)
         return response
 
@@ -75,18 +76,22 @@ class Importxl(View):
         lead_resource = LeadResource()
         dataset = Dataset()
         new_lead = request.FILES['myfile']
-        if not new_lead.name.endswith('xlsx' or 'xls'):
-            messages.info(request, 'Unsupported Format')
-            return redirect('/import-excel/')
+        if not new_lead.name.endswith('xlsx'):
+            if not new_lead.name.endswith('xls'):
+                messages.info(request, 'Unsupported Format')
+                return redirect('/import-excel/')
         if new_lead.name.endswith('xlsx'):
             imported_data = dataset.load(new_lead.read(), format='xlsx')
         if new_lead.name.endswith('xls'):
             imported_data = dataset.load(new_lead.read(), format='xls')
         for data in imported_data:
-            print(data)
-
-            Leads.objects.create(author=request.user, outlet = data[1], 
-            zone = data[2],coordinates = data[3], timings = data[4],address = data[5])
+            if not data[1]:
+                continue
+            elif data[1]=='Outlet' or data[1]=='outlet' or data[1]=='Outlets' or data[1]=='outlets':
+                print("key name")
+            else:
+                Leads.objects.create(author=request.user, outlet = data[1], 
+                zone = data[2],coordinates = data[3], timings = data[4],address = data[5])
         context={}
         return redirect('/leads')
 

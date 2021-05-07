@@ -108,6 +108,9 @@ class LogoutView(View):
         messages.success(request, 'You are now logged out')
         return redirect('/auth/login')
 
+class AccountView(View):
+    def get(self, request):
+        return render(request, 'auth/account.html')
 
 class SetnewpassView(View):
     def get(self, request):

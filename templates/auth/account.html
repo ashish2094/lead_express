@@ -1,0 +1,15 @@
+{% extends 'dashboard.html' %} {% block content %}
+<div class="container mt-5">
+  <div class="card border-secondary mb-3" style="max-width: 50rem">
+    <div class="border-info mt- p-5 rounded">
+      <h3>Account Details</h3>
+      <p class="lead">
+        <strong>User name - </strong>{{ request.user.username }}<br />
+        <strong>Email - </strong>{{ request.user.email }}<br />
+        <strong>Date joined - </strong>{{ request.user.date_joined }}<br />
+      </p>
+    </div>
+    <hr />
+  </div>
+  {% endblock %}
+</div>

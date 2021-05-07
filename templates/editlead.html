@@ -1,7 +1,33 @@
 {% extends 'dashboard.html' %} {% block content %}
 <div class="container mt-4">
   <button class="btn btn-outline-info float-right"><a href="{% url 'lead-dashboard' %}">Back</a></button>
-  <p><h2>Update Lead</h2></p>
+  <p><h2>View and Update Lead</h2></p>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card border-info" style="max-width: 20rem;">
+        <div class="card-header">Date Added : </div>
+        <div class="card-body">
+          <h4 class="card-title">{{ lead.date }}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card border-info" style="max-width: 20rem;">
+        <div class="card-header">Added By : </div>
+        <div class="card-body">
+          <h4 class="card-title">{{ lead.author }}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card border-info" style="max-width: 20rem;">
+        <div class="card-header">Id : </div>
+        <div class="card-body">
+          <h4 class="card-title">{{ lead.id }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
   
   <form action="{% url 'lead-edit' lead.id %}" method="post">
     {% csrf_token %}
