@@ -1,0 +1,26 @@
+{% extends 'dashboard.html' %}{% load static %} {% block content %}
+
+<div class="card">
+  <div class="card-header">
+    <h2>Import Excel Sheet</h2>
+    <a href="{% url 'lead-dashboard' %}"
+      >Back <span class="las la-arrow-right"></span
+    ></a>
+  </div>
+  <div class="card-body">
+    <form
+      style="padding: 1rem"
+      action="{% url 'import-xl' %}"
+      enctype="multipart/form-data"
+      method="post"
+    >
+      {% csrf_token %}
+      <div style="padding-bottom: 1rem">
+        <input class="form-control" type="file" id="myfile" name="myfile" />
+      </div>
+      <button class="lbtn" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

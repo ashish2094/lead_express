@@ -1,0 +1,91 @@
+{% extends 'dashboard.html' %} {% load static %} {% block content %}
+
+<div class="">
+  {% include 'partials/messages.html' %}
+  <div class="lead-container">
+    <div class="card">
+      <div class="card-header">
+        <h2>Leads</h2>
+        <a href="{% url 'import-xl' %}"
+          >Import
+          <span style="font-size: large" class="las la-file-excel"></span
+        ></a>
+        <a href="{% url 'export-xl' %}"
+          >Export
+          <span style="font-size: large" class="las la-file-excel"></span
+        ></a>
+
+        <button>
+          <a href="{% url 'lead-add' %}">Add Lead</a
+          ><span style="font-size: large" class="las la-plus"></span>
+        </button>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="lead-table" width="100%">
+            <thead>
+              <tr class="table-grid">
+                <th>Sr.No.</th>
+                <th>Outlet</th>
+                <th>Zones</th>
+                <th>Coordinates</th>
+                <th>Timings</th>
+                <th>Address</th>
+                <th>Remark</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for ob in page_obj %}
+              <tr
+                class="row-clickable table-grid"
+                style="cursor: pointer"
+                data-href="https://www.google.com/"
+              >
+                <td scope="row">{{ forloop.counter }}</td>
+                <!--It starts from one and incremented one-->
+                <td>
+                  <a
+                    style="color: blueviolet"
+                    href="{% url 'lead-edit' ob.id %}"
+                    >{{ ob.outlet }}</a
+                  >
+                </td>
+                <td>{{ ob.zone }}</td>
+                <td>{{ ob.coordinates }}</td>
+                <td>{{ ob.timings }}</td>
+                <td>{{ ob.address }}</td>
+                <td>{{ ob.remark }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pagination-container">
+    <ul class="pagination">
+      {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}"
+          >Previous</a
+        >
+      </li>
+      {% endif %}
+      <li class="page-item active">
+        <a class="page-link" href="#">{{ page_obj.number }}</a>
+      </li>
+      {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}"
+          >Next</a
+        >
+      </li>
+      {% endif %}
+    </ul>
+    <strong
+      >Showing page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+    </strong>
+  </div>
+</div>
+{% endblock %}

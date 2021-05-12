@@ -7,3 +7,7 @@ def home_view(request):
 def contact_view(request):
     context ={}
     return render(request, 'Contact.html', context)
+
+def dashboard_view(request):
+    context ={}
+    return render(request, 'auth/dash.html', context)

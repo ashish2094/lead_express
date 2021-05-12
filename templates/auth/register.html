@@ -6,11 +6,19 @@
     <div class="card mt-5 bg-light rounded">
       <div class="card-body">
         <h3
-          class="u-align-center u-custom-font u-font-lobster u-text u-text-black u-text-4"
+          class="
+            u-align-center
+            u-custom-font
+            u-font-lobster
+            u-text
+            u-text-black
+            u-text-4
+          "
         >
           Register for a new Account <br />
           <hr />
         </h3>
+        {% include 'partials/messages.html' %}
 
         <form action="{% url 'register' %}" method="post">
           {% csrf_token %}

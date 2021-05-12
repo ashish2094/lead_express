@@ -1,134 +1,128 @@
-<!DOCTYPE html>
-{% load static %}
+{% load static %}<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title class="u-custom-font u-font-lobster">LeadExpress</title>
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
-    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <title>LeadExpress</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/leads.css' %}" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+    />
+    <script></script>
   </head>
   <body>
-    <nav
-      class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
-    >
-      <a
-        class="navbar-brand col-md-3 col-lg-2 me-0 px-5 py-3"
-        href="{% url 'home' %}"
-      >
-        LeadExpress</a
-      >
-      <button
-        class="navbar-toggler position-absolute d-md-none collapsed"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#sidebarMenu"
-        aria-controls="sidebarMenu"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!--<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
-      <nav
-        class="navbar navbar-expand-sm navbar-dark bg-dark px-3 py-2"
-        aria-label="Third navbar example"
-      >
-        <div class="container-fluid my-0 px-3">
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarsExample03"
-            aria-controls="navbarsExample03"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+    <input type="checkbox" name="" id="nav-toggle" />
+
+    <div class="sidebar">
+      <div class="sidebar-brand">
+        <h2><span>LEADEXPRESS</span></h2>
+      </div>
+      <div class="sidebar-menu">
+        <li>
+          <a class="active" href="{% url 'dashboard' %}"
+            ><span class="las la-chalkboard"></span><span>Dashboard</span></a
           >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarsExample03">
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  aria-current="page"
-                  href="{% url 'home' %}"
-                  >Home</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" target="”_blank”" href="{% url 'contact' %}"
-                  >Contact</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" tabindex="-1">About</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="dropdown03"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  >Dropdown</a
-                >
-                <ul class="dropdown-menu" aria-labelledby="dropdown03">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-          <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <input class="btn btn-primary" type="submit" value="Sign out" />
-          </form>
         </li>
-      </ul>
-    </nav>
-
-    <div class="container-fluid">
-      <div class="row">
-        {% include 'partials/sidebar.html' %}
-
-        <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-          {% block content %} replace {% endblock %}
-        </main>
+        <li>
+          <a class="" href="{% url 'lead-dashboard' %}"
+            ><span class="las la-users"></span><span>Leads</span></a
+          >
+        </li>
+        <li>
+          <a class="" href=""
+            ><span class="las la-clipboard-list"></span><span>Reports</span></a
+          >
+        </li>
+        <li>
+          <a class="" href=""
+            ><span class="las la-comments"></span><span>Messages</span></a
+          >
+        </li>
+        <li>
+          <a class="" href="{%url 'account' %}"
+            ><span class="las la-user-circle"></span><span>Account</span></a
+          >
+        </li>
+        <li>
+          <a href="{% url 'contact' %}" target="blank"
+            ><span class="las la-info"></span><span>About</span></a
+          >
+        </li>
       </div>
     </div>
-    <script
-      src="/docs/5.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-      crossorigin="anonymous"
-    ></script>
-    <script src="{% static 'js/main.js' %}"></script>
+
+    <div class="main-content">
+      <header>
+        <h2 class="header-title">
+          <label for="nav-toggle">
+            <span class="las la-bars"></span>
+            <h3>Dashboard</h3>
+          </label>
+        </h2>
+        <div class="search-wrapper">
+          <span class="las la-search"> </span>
+          <input type="search" placeholder="search here" />
+        </div>
+        <div class="user-wrapper">
+          <section>
+            <img
+              src="{% static 'img/pic.png' %}"
+              class="pic"
+              width="40px"
+              height="40px"
+              alt=""
+            />
+
+            <div class="action">
+              <div class="profile"></div>
+              <div class="menu">
+                <h3>
+                  {{request.user.first_name}} {{request.user.last_name}}<br /><span
+                    >Super Admin</span
+                  >
+                </h3>
+                <ul>
+                  <li>
+                    <span class="las la-id-badge"></span
+                    ><a href="{%url 'account' %}">My Profile</a>
+                  </li>
+                  <li>
+                    <span class="las la-user-cog"></span
+                    ><a href="">Edit Profile</a>
+                  </li>
+                  <li>
+                    <span class="las la-inbox"></span><a href="">Inbox</a>
+                  </li>
+                  <li>
+                    <span class="las la-cogs"></span><a href="">Settings</a>
+                  </li>
+                  <li>
+                    <span class="las la-exclamation-circle"></span><a>Help</a>
+                  </li>
+                  <li>
+                    <span class="las la-power-off"></span>
+                    <form action="{% url 'logout' %}" method="post">
+                      {% csrf_token %}
+                      <input
+                        class="lbtn btn-primary"
+                        type="submit"
+                        value="Sign out"
+                      />
+                    </form>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </div>
+      </header>
+      <main>{% block content %} {% endblock content %}</main>
+    </div>
   </body>
+  <script src="{% static 'js/dropdown.js' %}"></script>
 </html>

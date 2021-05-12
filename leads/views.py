@@ -10,6 +10,7 @@ from django.core.paginator import Paginator
 import datetime
 from tablib import Dataset
 import xlwt
+import xlrd
 
 # Create your views here.
 class LeadView(LoginRequiredMixin, View):
@@ -24,7 +25,7 @@ class LeadView(LoginRequiredMixin, View):
             'data': data,
             'page_obj' : page_obj,
         }
-        return render(request, 'leads.html', context)
+        return render(request, 'lead/leads.html', context)
 
 class LeadAddView(LoginRequiredMixin, View):
     login_url = '/auth/login/'
@@ -32,7 +33,7 @@ class LeadAddView(LoginRequiredMixin, View):
         context = {
         }
         print(context)
-        return render(request, "leadadd.html", context)
+        return render(request, "lead/leadadd.html", context)
 
     def post(self, request):
         outlet = request.POST['outlet']
@@ -59,7 +60,7 @@ class Exportxl(View):
         for col_n in range(len(cols)):
             ws.write(row_num, col_n, cols[col_n], font_style)
         font_style = xlwt.XFStyle()
-        rows = Leads.objects.all().order_by('-date').values_list('outlet', 'zone', 'coordinates', 'timings', 'address', 'remark', 'date')
+        rows = Leads.objects.filter(author=request.user).order_by('-date').values_list('outlet', 'zone', 'coordinates', 'timings', 'address', 'remark', 'date')
         for row in rows:
             row_num += 1
             ws.write(row_num, 0, str(row_num), font_style)
@@ -70,7 +71,7 @@ class Exportxl(View):
 
 class Importxl(View):
     def get(self, request):
-        return render(request, "upload.html", {})
+        return render(request, "lead/upload.html", {})
 
     def post(self, request):
         lead_resource = LeadResource()
@@ -102,7 +103,7 @@ class EditLeadView(LoginRequiredMixin, View):
         context = {
             'lead' : lead,
             }
-        return render(request, "editlead.html", context)
+        return render(request, "lead/editlead.html", context)
 
     def post(self, request, id):
         outlet = request.POST['outlet']

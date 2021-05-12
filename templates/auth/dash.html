@@ -1,0 +1,136 @@
+{% extends 'dashboard.html' %} {% block content %}
+<div class="cards">
+  <div class="cards-single">
+    <div>
+      <h1>54</h1>
+      <span>Leads</span>
+    </div>
+    <div><span class="las la-users"> </span></div>
+  </div>
+  <div class="cards-single">
+    <div>
+      <h1>9</h1>
+      <span>Restaurants</span>
+    </div>
+    <div><span class="las la-map-marked-alt"> </span></div>
+  </div>
+  <div class="cards-single">
+    <div>
+      <h1>8</h1>
+      <span>Messages</span>
+    </div>
+    <div><span class="las la-comments"> </span></div>
+  </div>
+  <div class="cards-single">
+    <div>
+      <h1><span class="las la-rupee-sign"></span> 53</h1>
+      <span>Income</span>
+    </div>
+    <div><span class="lab la-google-wallet"> </span></div>
+  </div>
+</div>
+
+<div class="recent-grid">
+  <div class="projects">
+    <div class="card">
+      <div class="card-header">
+        <h>Recent Projects</h>
+        <button>See all <span class="las la-arrow-right"></span></button>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table width="100%">
+            <thead>
+              <td>Project Title</td>
+              <td>Department</td>
+              <td>Status</td>
+            </thead>
+            <tbody>
+              <tr>
+                <td>UI/UX Design</td>
+                <td>UI Team</td>
+                <td><span class="status purple"></span>review</td>
+              </tr>
+              <tr>
+                <td>Web Development</td>
+                <td>Frontend</td>
+                <td><span class="status pink"></span>in progress</td>
+              </tr>
+              <tr>
+                <td>Lead App</td>
+                <td>Mobile Team</td>
+                <td><span class="status orange"></span>pending</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="costomers">
+    <div class="card">
+      <div class="card-header">
+        <h>New Customers</h>
+        <button>See all <span class="las la-arrow-right"></span></button>
+      </div>
+      <div class="card-body">
+        <div class="customer">
+          <div class="info">
+            <div>
+              <img src="" alt="" width="40px" height="40px" />
+              <div>
+                <h4>Lewis L. Brown</h4>
+                <small>CEO ZSW</small>
+              </div>
+            </div>
+          </div>
+          <div class="contact">
+            <div>
+              <span class="las la-user-circle"></span>
+              <span class="las la-comments"></span>
+              <span class="las la-phone"></span>
+            </div>
+          </div>
+        </div>
+        <div class="customer">
+          <div class="info">
+            <div>
+              <img src="" alt="" width="40px" height="40px" />
+              <div>
+                <h4>Lewis L. Brown</h4>
+                <small>CEO ZSW</small>
+              </div>
+            </div>
+          </div>
+          <div class="contact">
+            <div>
+              <span class="las la-user-circle"></span>
+              <span class="las la-comment"></span>
+              <span class="las la-phone"></span>
+            </div>
+          </div>
+        </div>
+        <div class="customer">
+          <div class="info">
+            <div>
+              <img src="" alt="" width="40px" height="40px" />
+              <div>
+                <h4>Lewis L. Brown</h4>
+                <small>CEO ZSW</small>
+              </div>
+            </div>
+          </div>
+          <div class="contact">
+            <div>
+              <span class="las la-user-circle"></span>
+              <span class="las la-comment"></span>
+              <span class="las la-phone"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

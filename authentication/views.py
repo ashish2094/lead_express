@@ -72,7 +72,7 @@ class LoginView(View):
                 if user.is_active:
                     auth.login(request, user)
                     messages.success(request, 'Welcome,   '+user.first_name +' you are now logged in')
-                    return render(request, 'leads.html')
+                    return render(request, 'lead/leads.html')
                 messages.error(request, 'Account not found')
                 return render(request, 'auth/login.html')
             messages.error(request, 'Invalid credentials, try again!')
@@ -107,6 +107,7 @@ class LogoutView(View):
         auth.logout(request)
         messages.success(request, 'You are now logged out')
         return redirect('/auth/login')
+
 
 class AccountView(View):
     def get(self, request):

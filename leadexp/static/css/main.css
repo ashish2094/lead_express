@@ -20,3 +20,10 @@
 .showpass:hover {
   transform: scale(1.2);
 }
+
+#table tr:hover {
+  cursor: pointer;
+}
+.table-row {
+  cursor: pointer;
+}
