@@ -72,7 +72,7 @@ class LoginView(View):
                 if user.is_active:
                     auth.login(request, user)
                     messages.success(request, 'Welcome,   '+user.first_name +' you are now logged in')
-                    return render(request, 'lead/leads.html')
+                    return render(request, 'auth/dash.html')
                 messages.error(request, 'Account not found')
                 return render(request, 'auth/login.html')
             messages.error(request, 'Invalid credentials, try again!')
