@@ -1,5 +1,5 @@
 .u-section-1 {
-  background-image: url(http://127.0.0.1:8000/static/img/base.jpg);
+  background-image: url(https://leadexp.herokuapp.com/static/img/base-1.jpg);
 }
 
 .u-section-1 .u-sheet-1 {
@@ -464,7 +464,7 @@
   }
 }
 .u-section-3 {
-  background-image: url(http://127.0.0.1:8000/static/img/base-2.jpg);
+  background-image: url(https://leadexp.herokuapp.com/static/img/base-2.jpg);
   background-position: 50% 50%;
 }
 
@@ -1024,7 +1024,7 @@
 
 .u-section-5 .u-image-1 {
   min-height: 623px;
-  background-image: url("http://127.0.0.1:8000/static/img/e54b04ff-7e70-4e45-a3b4-d6b43c5616c3.jpeg");
+  background-image: url("https://leadexp.herokuapp.com/static/img/e54b04ff-7e70-4e45-a3b4-d6b43c5616c3.jpeg");
   background-position: 50% 50%;
 }
 
@@ -1051,7 +1051,7 @@
 
 .u-section-5 .u-image-2 {
   min-height: 623px;
-  background-image: url("http://127.0.0.1:8000/static/img/b270865f-bd3a-4578-8054-7a8722565915.jpeg");
+  background-image: url("https://leadexp.herokuapp.com/static/img/b270865f-bd3a-4578-8054-7a8722565915.jpeg");
   background-position: 50% 100%;
 }
 
@@ -1165,13 +1165,13 @@
 
 .u-section-6 .u-image-1 {
   min-height: 352px;
-  background-image: url("http://127.0.0.1:8000/static/img/983913b4-b58c-4f68-a82c-3280bf7a1a77.jpg");
+  background-image: url("https://leadexp.herokuapp.com/static/img/983913b4-b58c-4f68-a82c-3280bf7a1a77.jpg");
   background-position: 50% 50%;
 }
 
 .u-section-6 .u-image-2 {
   min-height: 352px;
-  background-image: url("http://127.0.0.1:8000/static/img/3e67e0cf-275f-46e7-8339-4d27b8886f47.jpg");
+  background-image: url("https://leadexp.herokuapp.com/static/img/3e67e0cf-275f-46e7-8339-4d27b8886f47.jpg");
   background-position: 50% 50%;
 }
 
@@ -1353,7 +1353,7 @@
   }
 }
 .u-section-7 {
-  background-image: url("http://127.0.0.1:8000/static/img/725d7ad7-2f2d-42af-961e-5a31ad366542.jpg");
+  background-image: url("https://leadexp.herokuapp.com/static/img/base-3.jpg");
   background-position: 50% 50%;
 }
 
