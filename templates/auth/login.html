@@ -18,7 +18,7 @@
           Login to your Account <br />
           <hr />
         </h3>
-
+        {% include 'partials/messages.html' %}
         <form action="{% url 'login' %}" method="post">
           {% csrf_token %}
           <div class="form-group">
@@ -39,6 +39,7 @@
               id="passwordfield"
               class="form-control"
               placeholder="Password"
+              style="padding-bottom: 5px"
             />
             <small class="float-right py-3 showpass">Show</small>
           </div>

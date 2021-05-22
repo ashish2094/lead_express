@@ -1,0 +1,13 @@
+.zone-block {
+  visibility: hidden;
+}
+#zone-check:checked + .zone-block {
+  visibility: visible;
+}
+
+.status-block {
+  visibility: hidden;
+}
+#status-check:checked + .status-block {
+  visibility: visible;
+}

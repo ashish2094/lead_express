@@ -1,0 +1,154 @@
+{% extends 'dashboard.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/delete.css' %}" />
+
+<div class="">
+  {% include 'partials/messages.html' %}
+  <div class="lead-container">
+    <div class="card">
+      <div class="c-head">
+        <h2>Search and Delete</h2>
+        <div class="menu-block">
+          <h3 class="menu-btn lbtn"><span class="las la-bars"> Menu</span></h3>
+          <div class="menu-leads">
+            <ul>
+              <li>
+                <span class="las la-plus-circle"></span
+                ><a href="{% url 'lead-add' %}">Add Lead</a>
+              </li>
+              <li>
+                <span class="las la-star"></span
+                ><a href="{% url 'lead-dashboard' %}">New Leads</a>
+              </li>
+              <li>
+                <span class="las la-check-circle"></span
+                ><a href="{%url 'lead-interested' %}">Interested</a>
+              </li>
+              <li>
+                <span class="las la-times-circle"></span
+                ><a href="{% url 'lead-uninterested' %}">Not Interested</a>
+              </li>
+              <li>
+                <span class="las la-file-excel"></span
+                ><a href="{% url 'import-xl' %}">Excel Files</a>
+              </li>
+              <li>
+                <span class="las la-search"></span
+                ><a href="{% url 'multidelete' %}"
+                  >Search and
+                  <strong style="color: red"
+                    ><span class="las la-trash"></span>Delete</strong
+                  ></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <form name="formpost" accept="{% url 'multidelete' %}" method="GET">
+        <div class="c-head">
+          <p>
+            Select Zone:
+            <select name="zone" id="">
+              <option selected>All</option>
+              {% for z in zone %}
+              <option name="" id="">{{ z }}</option>
+              {% endfor %}
+            </select>
+          </p>
+          <p>
+            Select Status:
+            <select name="option" id="">
+              <option selected>All</option>
+              {% for o in option %}
+              <option name="" id="">{{ o }}</option>
+              {% endfor %}
+            </select>
+          </p>
+          <a class="lbtn" href="{% url 'lead-dashboard' %}">Back</a>
+        </div>
+        <div class="c-head">
+          <p>
+            Date Select : from- <input type="date" name="min-date" id="" /> -to-
+            <input type="date" name="max-date" id="" />
+          </p>
+          <button
+            style="background-color: rgb(27, 85, 30)"
+            class="lbtn"
+            type="submit"
+          >
+            Filter
+          </button>
+        </div>
+      </form>
+
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="lead-table" width="100%">
+            <thead>
+              <tr class="table-grid">
+                <th>
+                  <label for="del-all">All-</label
+                  ><input type="checkbox" id="del-all" />
+                </th>
+                <th>Outlet</th>
+                <th>Zones</th>
+                <th>Owner</th>
+                <th>Contact</th>
+                <th>Timings</th>
+                <th>Address</th>
+              </tr>
+            </thead>
+            <form id="form-del" action="{% url 'multidelete' %}" method="post">
+              {% csrf_token %}
+              <p>Ckeck All or check indiviadual leads to delete</p>
+              <button
+                style="
+                  background-color: crimson;
+                  margin: 0px 12px 3px 0;
+                  float: right;
+                "
+                class="lbtn"
+                type="submit"
+              >
+                Delete
+              </button>
+              <tbody>
+                {% for ob in lead %}
+                <tr
+                  class="row-clickable table-grid"
+                  data-href="https://www.google.com/"
+                >
+                  <td scope="row">
+                    <input
+                      type="checkbox"
+                      class="del-uncheck"
+                      name="delitem"
+                      value="{{ ob.id }}"
+                    />
+                  </td>
+                  <td>
+                    <a
+                      style="color: blueviolet"
+                      href="{% url 'lead-edit' ob.id %}"
+                      >{{ ob.outlet }}</a
+                    >
+                  </td>
+
+                  <td>{{ ob.zone }}</td>
+                  <td>{{ ob.owner }}</td>
+                  <td>{{ ob.contact }}</td>
+                  <td>{{ ob.timings }}</td>
+                  <td>{{ ob.address }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </form>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="{% static 'js/delete.js' %}"></script>
+</div>
+{% endblock %}

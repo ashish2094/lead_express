@@ -24,8 +24,8 @@
       </div>
       <div class="sidebar-menu">
         <li>
-          <a class="active" href="{% url 'dashboard' %}"
-            ><span class="las la-chalkboard"></span><span>Dashboard</span></a
+          <a class="" href="{% url 'dashboard' %}"
+            ><span class="las la-chart-bar"></span><span>Dashboard</span></a
           >
         </li>
         <li>
@@ -57,11 +57,11 @@
     </div>
 
     <div class="main-content">
-      <header>
+      <header class="head">
         <h2 class="header-title">
           <label for="nav-toggle">
             <span class="las la-bars"></span>
-            <h3>Dashboard</h3>
+            <h3>Hello! {{request.user}}</h3>
           </label>
         </h2>
         <div class="search-wrapper">

@@ -2,7 +2,7 @@
   margin-top: -0.1rem;
   display: grid;
   grid-gap: 2px;
-  grid-template-columns: 5% 15% 10% 25% 15% 20% 10%;
+  grid-template-columns: 5% 15% 15% 15% 10% 15% 25%;
 }
 
 table {
@@ -12,7 +12,7 @@ table {
   padding-top: 2rem;
   padding-bottom: 2rem;
   border-top: 3px solid #3f0c4e;
-  border-bottom: 2x solid #25072e;
+  border-bottom: 2x solid #b696c0;
   font-size: 18px;
 }
 .lead-table thead td {
@@ -32,26 +32,14 @@ table {
   text-align: center;
   justify-content: center;
 }
-
-td .status {
-  display: inline-block;
-  height: 10px;
-  width: 10px;
-  border-radius: 50%;
-  margin-right: 1rem;
-}
-tr td:last-child {
-  display: flex;
-  align-items: center;
+tbody td {
+  text-align: center;
+  justify-content: center;
 }
 
 .table-responsive {
   width: 100%;
   overflow-x: auto;
-}
-
-.lead-container .card .card-header button:first-child {
-  color: white;
 }
 
 .form {
@@ -76,7 +64,79 @@ tr td:last-child {
   padding: 0.5rem 1rem;
   border: 1px solid var(--main-color);
 }
+.lbtn a {
+  color: #fff;
+}
 
 .project .card {
   background-color: rgb(255, 241, 220);
+}
+
+.c-head {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.menu-btn {
+  display: inline-block;
+  color: #3f0c4e;
+  background-color: #fff;
+  font-size: 15px;
+  border-width: 2px;
+}
+.menu-leads {
+  position: absolute;
+  right: 10px;
+  padding-left: 5px;
+  background: #f2f3f5;
+  box-shadow: 0px 2px 5px 3px rgba(0, 0, 0, 0.2);
+  width: 150px;
+  box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  transition: 0.5s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.menu-leads h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px 0;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2rem;
+}
+
+.menu-leads ul li {
+  list-style: none;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+.menu-leads ul li span {
+  font-size: 25px;
+  margin-right: 10px;
+  color: var(--main-color);
+  transition: 0.5s;
+}
+.menu-leads ul li:hover {
+  color: rgb(192, 31, 144);
+  padding-left: 10px;
+  transition: 300ms;
+}
+.menu-block:hover .menu-leads {
+  visibility: visible;
+  opacity: 1;
+}
+
+.exel-grid {
+  margin-top: -0.1rem;
+  display: grid;
+  grid-gap: 2px;
+  grid-template-columns: 50% 50%;
 }

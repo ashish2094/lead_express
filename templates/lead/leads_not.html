@@ -5,17 +5,7 @@
   <div class="lead-container">
     <div class="card">
       <div class="c-head">
-        <h2>New Leads</h2>
-        <form action="{% url 'lead-dashboard' %}" method="post">
-          {% csrf_token %}
-          <select name="zone" id="">
-            <option selected>All</option>
-            {% for z in zone %}
-            <option name="" id="">{{ z }}</option>
-            {% endfor %}
-          </select>
-          <button class="lbtn" type="submit">Zone Filter</button>
-        </form>
+        <h2>Leads not interested</h2>
         <div class="menu-block">
           <h3 class="menu-btn lbtn"><span class="las la-bars"> Menu</span></h3>
           <div class="menu-leads">

@@ -5,8 +5,7 @@
     <div class="card">
       <div class="card-header">
         <h2>View and Update Lead</h2>
-        <a href="{% url 'lead-dashboard' %}">Back <span class="las la-arrow-right"></span></a
-          >
+        <a style="background-color: rgb(204, 42, 74);" class="lbtn" href="{% url 'lead-delete' lead.id %}"> Delete<span class="las la-trash" style="font-size: 18px;"></span></a>
       </div>
       <div class="card-header">
         
@@ -38,11 +37,32 @@
               </div>
               <div class="form-group">
                 <h5>Zone : </h5>
+                <select
+                name="zone"
+                id=""
+              >
+                <option selected>{{ lead.zone }}</option>
+                {% for z in zone %}
+                <option name="" id="">{{ z }}</option>
+                {% endfor %}
+              </select>
+              </div>
+              <div class="form-group">
+                <h5>Owner : </h5>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="owner"
+                  value="{{ lead.owner }}"
+                />
+              </div>
+              <div class="form-group">
+                <h5>Contact : </h5>
                 <input
                 type="text"
                   class="form-control"
-                  name="zone"
-                  value="{{ lead.zone }}"
+                  name="contact"
+                  value="{{ lead.contact }}"
                 ></input>
               </div>
               <div class="form-group">
@@ -73,13 +93,13 @@
                 ></input>
               </div>
               <div class="form-group">
-                <h5>Remark : </h5>
-                <input
-                type="text"
-                  class="form-control"
-                  name="remark"
-                  value="{{ lead.remark }}"
-                ></input>
+                <h5>Status : </h5>
+                <select name="option">
+                  <option selected >{{ lead.status }}</option>
+                  {% for o in option %}
+                  <option name="">{{ o }}</option>
+                  {% endfor %}
+                </select>
               </div>
               
           </div>
@@ -88,7 +108,7 @@
                 Submit
               </button>
             </form>
-            <a class="lbtn" href="{% url 'lead-delete' lead.id %}">Delete</a>
+            <a class="lbtn" href="{% url 'lead-dashboard' %}"><span class="las la-arrow-left"></span> Back</a>
         </div>
     
 </div>

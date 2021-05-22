@@ -1,25 +1,106 @@
 {% extends 'dashboard.html' %}{% load static %} {% block content %}
-
+<link rel="stylesheet" href="{% static 'css/upload.css' %}" />
 <div class="card">
   <div class="card-header">
-    <h2>Import Excel Sheet</h2>
+    <h2>Files</h2>
     <a href="{% url 'lead-dashboard' %}"
-      >Back <span class="las la-arrow-right"></span
+      >Back <span class="las la-arrow-left"></span
     ></a>
   </div>
-  <div class="card-body">
-    <form
-      style="padding: 1rem"
-      action="{% url 'import-xl' %}"
-      enctype="multipart/form-data"
-      method="post"
-    >
-      {% csrf_token %}
-      <div style="padding-bottom: 1rem">
-        <input class="form-control" type="file" id="myfile" name="myfile" />
+  <div class="card-body exel-grid">
+    <div>
+      <div class="card-header">
+        <h2>Export Excel Sheets</h2>
       </div>
-      <button class="lbtn" type="submit">Submit</button>
-    </form>
+      <div class="card-body">
+        <form action="{% url 'export-xl' %}" method="get">
+          <p>Check/Uncheck the columns to be included in the sheet</p>
+          <br />
+          <div class="exel-grid">
+            <p>
+              Outlet :
+              <input type="checkbox" name="checks" value="outlet" />
+            </p>
+            <p>
+              Zone :
+              <input
+                id="zone-check"
+                type="checkbox"
+                name="checks"
+                value="zone"
+              />
+              <select class="zone-block" name="zone">
+                <option selected>All</option>
+                {% for z in zone %}
+                <option name="">{{ z }}</option>
+                {% endfor %}
+              </select>
+            </p>
+            <p>
+              Owner :
+              <input type="checkbox" name="checks" value="owner" />
+            </p>
+            <p>
+              Contact :
+              <input type="checkbox" name="checks" value="contact" />
+            </p>
+            <p>
+              Coordinates :
+              <input type="checkbox" name="checks" value="coordinates" />
+            </p>
+            <p>
+              Timings :
+              <input type="checkbox" name="checks" value="timings" />
+            </p>
+            <p>
+              Address :
+              <input type="checkbox" name="checks" value="address" />
+            </p>
+            <p>
+              Status :
+              <input
+                id="status-check"
+                type="checkbox"
+                name="checks"
+                value="status"
+              />
+              <select class="status-block" name="option">
+                <option selected>All</option>
+                {% for o in option %}
+                <option name="">{{ o }}</option>
+                {% endfor %}
+              </select>
+            </p>
+          </div>
+          <br />
+          <p>
+            Date Select : from <input type="date" name="min-date" id="" /> to
+            <input type="date" name="max-date" id="" />
+          </p>
+          <button class="lbtn" type="submit">Export</button>
+        </form>
+      </div>
+    </div>
+    <div>
+      {% include 'partials/messages.html' %}
+      <div class="card-header">
+        <h2>Import Excel Sheet</h2>
+      </div>
+      <div class="card-body">
+        <form
+          style="padding: 1rem"
+          action="{% url 'import-xl' %}"
+          enctype="multipart/form-data"
+          method="post"
+        >
+          {% csrf_token %}
+          <div style="padding-bottom: 1rem">
+            <input class="form-control" type="file" id="myfile" name="myfile" />
+          </div>
+          <button class="lbtn" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 

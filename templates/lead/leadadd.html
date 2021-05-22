@@ -5,9 +5,7 @@
     <div class="card">
       <div class="card-header">
         <h2>Add Leads</h2>
-        <button>Add Row <span class="las la-arrow-right"></span></button>
-        <a href="{% url 'lead-dashboard' %}">Back <span class="las la-arrow-right"></span></a
-          >
+        <a class="lbtn" href="{% url 'lead-dashboard' %}"><span class="las la-arrow-left"></span> Back</a>
       </div>
       <div class="card-body">
         <div class="table-responsive form">
@@ -21,10 +19,30 @@
             </div>
             <div class="form-group">
               <h5>Zone : </h5>
+              <select
+              name="zone"
+              id=""
+            >
+              <option selected>--Select--</option>
+              {% for z in zone %}
+              <option name="" id="">{{ z }}</option>
+              {% endfor %}
+            </select>
+            </div>
+            <div class="form-group">
+              <h5>Owner : </h5>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                name="owner"
+              />
+            </div>
+            <div class="form-group">
+              <h5>Contact : </h5>
               <input
               type="text"
                 class="form-control form-control-sm"
-                name="zone"
+                name="contact"
               ></input>
             </div>
             <div class="form-group">
@@ -52,12 +70,12 @@
               ></input>
             </div>
             <div class="form-group">
-              <h5>Remark : </h5>
-              <input
-              type="text"
-                class="form-control form-control-sm"
-                name="remark"
-              ></input>
+              <h5>Status : </h5>
+              <select name="option">
+                {% for o in option %}
+                <option name="">{{ o }}</option>
+                {% endfor %}
+              </select>
             </div>
           </div>
         </div>
@@ -66,6 +84,7 @@
       Submit
     </button>
   </form>
+  <a class="lbtn" href="{% url 'lead-dashboard' %}"><span class="las la-arrow-left"></span> Back</a>
 </div>
 
 {% endblock %}

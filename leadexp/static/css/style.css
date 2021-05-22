@@ -22,7 +22,7 @@
   left: 0;
   top: 0;
   height: 100%;
-  background-image: url(https://leadexp.herokuapp.com/static/img/side.jpg);
+  background-image: url(http://127.0.0.1:8000/static/img/side2.jpg);
   background-size: cover;
   z-index: 100;
   transition: width 300ms;
@@ -56,10 +56,18 @@
   padding-left: 1rem;
 }
 
-.sidebar-menu a.active {
+.sidebar-menu li a:hover {
   background: #fff;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  color: var(--main-color);
+  border-radius: 30px 0 0 30px;
+  transition: 0.5s ease;
+}
+.sidebar-menu li a:active {
+  background: #fff;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
   color: var(--main-color);
   border-radius: 30px 0 0 30px;
 }
@@ -216,15 +224,16 @@ header label span {
   font-size: 25px;
   margin-right: 10px;
   color: var(--main-color);
-  transition: 0.5s;
 }
 .action .menu ul li:hover {
   color: rgb(192, 31, 144);
   font-size: 20px;
+  transition: 300ms;
 }
 .user-wrapper section:hover .action .menu {
   visibility: visible;
   opacity: 1;
+  transition: 0.3s;
 }
 
 main {
@@ -386,6 +395,14 @@ tr td:last-child {
   }
   .sidebar {
     left: -100%;
+    width: 1%;
+    transition: 1s;
+  }
+  header {
+    position: sticky;
+    opacity: 100;
+    width: 100%;
+    left: 0;
   }
 
   header h2 label {
@@ -415,17 +432,12 @@ tr td:last-child {
     width: 100%;
     margin-left: 0rem;
   }
-  header {
-    width: 100%;
-    left: 0;
-    transition: left 300ms;
-  }
 
   #nav-toggle:checked + .sidebar {
     left: 0;
     z-index: 100;
     width: var(--width-sidebar);
-    transition: 300ms;
+    transition: 0.3s;
   }
   #nav-toggle:checked + .sidebar .sidebar-brand,
   #nav-toggle:checked + .sidebar li {
@@ -439,10 +451,7 @@ tr td:last-child {
   #nav-toggle:checked + .sidebar li a span:last-child {
     display: inline;
   }
-  #nav-toggle:checked + header {
-    margin: 0rem;
-    width: 100%;
-  }
+
   #nav-toggle:checked ~ .main-content {
     margin-left: 0rem;
   }

@@ -1,0 +1,11 @@
+#del-all {
+  box-shadow: 0 0 0 1px rgb(95, 5, 65);
+}
+.del-check {
+  box-shadow: 0 0 0 1px rgb(95, 5, 65);
+  display: none;
+}
+.del-uncheck {
+  box-shadow: 0 0 0 1px rgb(95, 5, 65);
+  display: block;
+}

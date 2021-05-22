@@ -1,15 +1,16 @@
-{% extends 'dashboard.html' %} {% block content %}
+{% extends 'dashboard.html' %} {% load static %}{% block content %}
 <div class="card" style="background-color: cornsilk;">
   <div class="card-header style="max-width: 50rem">
     <h3>Account Details</h3>
     <hr />
   </div>
-  <div class="card-body">
-    <p class="account" style="padding: 1rem;">
+  <div style="display: inline-flex;" class="card-body">
+    <div class="account" style="padding: 1rem;">
       <strong>User name - </strong>{{ request.user.username }}<br />
       <strong>Email - </strong>{{ request.user.email }}<br />
       <strong>Date joined - </strong>{{ request.user.date_joined }}<br />
-    </p>
+    </div>
+    <img style="float: right;" src="{% static 'img/pic.png' %}" alt="">
   </div>
   {% endblock %}
 </div>

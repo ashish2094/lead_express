@@ -1,32 +1,68 @@
-{% extends 'dashboard.html' %} {% block content %}
+{% extends 'dashboard.html' %}{% load static %} {% block content %}
 <div class="cards">
-  <div class="cards-single">
+  <div
+    style="
+      background-image: linear-gradient(
+        to right top,
+        #d25b28,
+        #dc7828,
+        #e4952c,
+        #e8b138,
+        #eacd4a
+      );
+    "
+    class="cards-single"
+  >
     <div>
-      <h1>54</h1>
-      <span>Leads</span>
+      <h1>{{ new_l }}</h1>
+      <span>New Leads</span>
     </div>
     <div><span class="las la-users"> </span></div>
   </div>
-  <div class="cards-single">
+  <div
+    style="
+      background-image: linear-gradient(
+        to right top,
+        #f266db,
+        #ff5ab1,
+        #ff5b89,
+        #fc6466,
+        #ea724a
+      );
+    "
+    class="cards-single"
+  >
     <div>
-      <h1>9</h1>
-      <span>Restaurants</span>
+      <h1>{{ k_audit }}</h1>
+      <span>Kitchen Audited</span>
     </div>
-    <div><span class="las la-map-marked-alt"> </span></div>
+    <div><span class="las la-clipboard-check"> </span></div>
+  </div>
+  <div
+    style="
+      background-image: linear-gradient(
+        to right top,
+        #7bd228,
+        #67da57,
+        #56e07c,
+        #4ae69c,
+        #4aeab8
+      );
+    "
+    class="cards-single"
+  >
+    <div>
+      <h1>{{ signed }}</h1>
+      <span>Signed Outlets</span>
+    </div>
+    <div><span class="las la-file-signature"> </span></div>
   </div>
   <div class="cards-single">
     <div>
-      <h1>8</h1>
-      <span>Messages</span>
+      <h1>{{ brands }}</h1>
+      <span>Brands Plugged</span>
     </div>
-    <div><span class="las la-comments"> </span></div>
-  </div>
-  <div class="cards-single">
-    <div>
-      <h1><span class="las la-rupee-sign"></span> 53</h1>
-      <span>Income</span>
-    </div>
-    <div><span class="lab la-google-wallet"> </span></div>
+    <div><span class="las la-handshake"></span></div>
   </div>
 </div>
 
@@ -34,33 +70,31 @@
   <div class="projects">
     <div class="card">
       <div class="card-header">
-        <h>Recent Projects</h>
-        <button>See all <span class="las la-arrow-right"></span></button>
+        <h>Recent Tasks</h>
+        <a href="{% url 'lead-interested' %}"
+          >See all <span class="las la-arrow-right"></span
+        ></a>
       </div>
       <div class="card-body">
         <div class="table-responsive">
           <table width="100%">
             <thead>
-              <td>Project Title</td>
-              <td>Department</td>
+              <td>Outlet</td>
+              <td>Owner</td>
+              <td>Contact</td>
               <td>Status</td>
             </thead>
             <tbody>
+              {% for d in data %}
               <tr>
-                <td>UI/UX Design</td>
-                <td>UI Team</td>
-                <td><span class="status purple"></span>review</td>
+                <td>
+                  <a href="{% url 'lead-edit' d.id %}">{{ d.outlet }}</a>
+                </td>
+                <td>{{ d.owner }}</td>
+                <td>{{ d.contact }}</td>
+                <td><span class="status purple"></span>{{ d.status }}</td>
               </tr>
-              <tr>
-                <td>Web Development</td>
-                <td>Frontend</td>
-                <td><span class="status pink"></span>in progress</td>
-              </tr>
-              <tr>
-                <td>Lead App</td>
-                <td>Mobile Team</td>
-                <td><span class="status orange"></span>pending</td>
-              </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>
@@ -77,10 +111,15 @@
         <div class="customer">
           <div class="info">
             <div>
-              <img src="" alt="" width="40px" height="40px" />
+              <img
+                src="{% static 'img/bat.jpg' %}"
+                alt=""
+                width="40px"
+                height="40px"
+              />
               <div>
-                <h4>Lewis L. Brown</h4>
-                <small>CEO ZSW</small>
+                <h4>Mohit Patel</h4>
+                <small>Sales Fruits&Co.</small>
               </div>
             </div>
           </div>
@@ -95,10 +134,15 @@
         <div class="customer">
           <div class="info">
             <div>
-              <img src="" alt="" width="40px" height="40px" />
+              <img
+                src="{% static 'img/cat.png' %}"
+                alt=""
+                width="40px"
+                height="40px"
+              />
               <div>
-                <h4>Lewis L. Brown</h4>
-                <small>CEO ZSW</small>
+                <h4>Sarah Brown</h4>
+                <small>Manager Zoom</small>
               </div>
             </div>
           </div>
@@ -113,7 +157,12 @@
         <div class="customer">
           <div class="info">
             <div>
-              <img src="" alt="" width="40px" height="40px" />
+              <img
+                src="{% static 'img/an.jpg' %}"
+                alt=""
+                width="40px"
+                height="40px"
+              />
               <div>
                 <h4>Lewis L. Brown</h4>
                 <small>CEO ZSW</small>
