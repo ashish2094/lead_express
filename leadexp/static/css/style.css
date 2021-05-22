@@ -22,7 +22,7 @@
   left: 0;
   top: 0;
   height: 100%;
-  background-image: url(http://127.0.0.1:8000/static/img/side2.jpg);
+  background-image: url(https://leadexp.herokuapp.com/static/img/side2.jpg);
   background-size: cover;
   z-index: 100;
   transition: width 300ms;
