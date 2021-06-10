@@ -14,8 +14,7 @@ def contact_view(request):
 
 
 def dashboard_view(request):
-    data = Leads.objects.filter(author=request.user,
-                                status=2).order_by('-date')[:5][::-1]
+    data = Leads.objects.filter(author=request.user,status=2).order_by('-date')[:5][::-1]
     new_l = Leads.objects.filter(author=request.user, status=1).count()
     k_audit = Leads.objects.filter(author=request.user, status=5).count()
     signed = Leads.objects.filter(author=request.user, status=6).count()
